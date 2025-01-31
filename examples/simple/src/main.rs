@@ -39,7 +39,7 @@ struct Args {
     #[clap(short = 'f', long, help = "prompt file to start generation")]
     file: Option<String>,
     /// set the length of the prompt + output in tokens
-    #[arg(long, default_value_t = 32)]
+    #[arg(long, default_value_t = 2048)]
     n_len: i32,
     /// override some parameters of the model
     #[arg(short = 'o', value_parser = parse_key_val)]
@@ -48,7 +48,7 @@ struct Args {
     #[cfg(any(feature = "cuda", feature = "vulkan"))]
     #[clap(long)]
     disable_gpu: bool,
-    #[arg(short = 's', long, help = "RNG seed (default: 1234)")]
+    #[arg(short = 's', long, help = "RNG seed (default: 1234)", default_value = "1000")]
     seed: Option<u32>,
     #[arg(
         short = 't',
@@ -88,6 +88,7 @@ fn parse_key_val(s: &str) -> Result<(String, ParamOverrideValue)> {
 #[derive(clap::Subcommand, Debug, Clone)]
 enum Model {
     /// Use an already downloaded model
+    #[clap(name = "local-model")]
     Local {
         /// The path to the model. e.g. `/home/marcus/.cache/huggingface/hub/models--TheBloke--Llama-2-7B-Chat-GGUF/blobs/08a5566d61d7cb6b420c3e4387a39e0078e1f2fe5f055f3a03887385304d4bfa`
         path: PathBuf,

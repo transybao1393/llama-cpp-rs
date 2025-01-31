@@ -16,6 +16,8 @@
 
 [readme]: https://github.com/utilityai/llama-cpp-rs/tree/main/llama-cpp-2
 
+Forked from utilityai/llama-cpp-rs
+
 This is the home for [llama-cpp-2][crates.io]. It also contains the [llama-cpp-sys] bindings which are updated regularly
 and in sync with [llama-cpp-2][crates.io].
 
@@ -150,7 +152,7 @@ total time = 954.18 ms
 Ensure that when you clone this project you also clone the submodules. This can be done with the following command:
 
 ```sh
-git clone --recursive https://github.com/utilityai/llama-cpp-rs
+git clone --recursive https://github.com/transybao1393/llama-cpp-rs.git
 ```
 
 or if you have already cloned the project you can run:
